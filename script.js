@@ -44,7 +44,7 @@ function renderizarProductos() {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-      <img src="${producto.image}" alt="${producto.title}">
+      <img src="${producto.image}" alt="${producto.title}" class="img-fluid">
       <h3>${producto.title}</h3>
       <p class="precio">$${producto.price.toFixed(2)}</p>
       <button data-id="${producto.id}">Agregar al carrito</button>

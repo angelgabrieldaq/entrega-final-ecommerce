@@ -118,7 +118,7 @@ nav a:focus-visible {
 }
 
 /* ===================== LAYOUT ===================== */
-main {
+main.container {
     max-width: 1140px;
     margin: 0 auto;
     padding: 0 24px 40px;
@@ -633,7 +633,7 @@ button[data-accion="eliminar"]:hover {
         gap: 8px;
     }
 
-    main {
+    main.container {
         padding: 0 16px 30px;
     }
 

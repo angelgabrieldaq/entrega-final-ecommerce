@@ -14,6 +14,7 @@ Sitio de e-commerce interactivo de ropa de hombre y accesorios, desarrollado com
 ## Tecnologías Usadas
 - **HTML5**: estructura semántica
 - **CSS3**: Flexbox, CSS Grid, Media Queries, variables CSS (paleta de marca)
+- **Bootstrap 5** (vía CDN): uso puntual de `container`, `img-fluid` y `btn`, combinado con el CSS propio (que tiene mayor especificidad y prevalece)
 - **JavaScript vanilla**: Fetch API (`Promise.all`), manipulación del DOM, `localStorage`, validación de formularios (sin frameworks ni bundlers)
 - **FakeStore API**: fuente de datos de productos (`https://fakestoreapi.com`)
 - **Google Fonts**: Roboto
