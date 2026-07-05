@@ -88,13 +88,12 @@ h2 {
     text-align: center;
 }
 
-/* PRODUCTOS EN COLUMNA VERTICAL */
+/* PRODUCTOS EN GRID DE 3 COLUMNAS (Flexbox) */
 .grid-productos {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 20px;
-    max-width: 500px;
-    margin: 0 auto;
+    justify-content: center;
 }
 
 .card {
@@ -103,6 +102,10 @@ h2 {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 0 1 calc(33.333% - 20px);
     transition: transform 0.3s;
 }
 
@@ -254,6 +257,12 @@ footer {
 }
 
 /* RESPONSIVO */
+@media (max-width: 1024px) {
+    .card {
+        flex: 0 1 calc(50% - 20px);
+    }
+}
+
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -274,6 +283,10 @@ footer {
 
     h2 {
         font-size: 1.3em;
+    }
+
+    .card {
+        flex: 1 1 100%;
     }
 }
 
