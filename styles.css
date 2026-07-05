@@ -1,3 +1,13 @@
+:root {
+    --negro: #111111;
+    --azul: #1e5aa8;
+    --verde: #2e9e5b;
+    --naranja: #f2820a;
+    --rojo: #d63b2f;
+    --fondo-claro: #f5f5f5;
+    --texto-oscuro: #222222;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,11 +17,12 @@
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--texto-oscuro);
+    background-color: var(--fondo-claro);
 }
 
 header {
-    background-color: #333;
+    background-color: var(--negro);
     color: white;
     padding: 20px;
     text-align: center;
@@ -41,7 +52,17 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #555;
+    background-color: var(--azul);
+}
+
+#cart-count {
+    display: inline-block;
+    background-color: var(--naranja);
+    color: var(--negro);
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 1px 7px;
+    font-size: 0.85em;
 }
 
 main {
@@ -61,7 +82,7 @@ h2 {
 
 /* INICIO */
 .inicio {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     padding: 30px;
     border-radius: 8px;
     text-align: center;
@@ -77,6 +98,7 @@ h2 {
 }
 
 .card {
+    background-color: #ffffff;
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
@@ -107,14 +129,18 @@ h2 {
 }
 
 .precio {
-    font-size: 1.3em;
-    color: #27ae60;
+    display: inline-block;
+    font-size: 1.1em;
+    background-color: var(--naranja);
+    color: var(--negro);
     font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 4px;
     margin: 10px 0;
 }
 
 .card button {
-    background-color: #e74c3c;
+    background-color: var(--azul);
     color: white;
     padding: 10px 15px;
     border: none;
@@ -126,7 +152,12 @@ h2 {
 }
 
 .card button:hover {
-    background-color: #c0392b;
+    background-color: #163f78;
+}
+
+.card button.agregado {
+    background-color: var(--verde);
+    color: var(--negro);
 }
 
 /* RESEÑAS CON GRID */
@@ -169,7 +200,7 @@ h2 {
 
 /* FORMULARIO */
 .contacto {
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     padding: 25px;
     border-radius: 8px;
     max-width: 500px;
@@ -195,11 +226,11 @@ h2 {
 .contacto input:focus,
 .contacto textarea:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: var(--azul);
 }
 
 .contacto button {
-    background-color: #3498db;
+    background-color: var(--azul);
     color: white;
     padding: 10px 20px;
     border: none;
@@ -211,11 +242,11 @@ h2 {
 }
 
 .contacto button:hover {
-    background-color: #2980b9;
+    background-color: #163f78;
 }
 
 footer {
-    background-color: #333;
+    background-color: var(--negro);
     color: white;
     text-align: center;
     padding: 20px;
@@ -254,19 +285,69 @@ footer {
     object-fit: contain;
 }
 
-/* CARRITO */
+/* CARRITO: drawer lateral */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+}
+
+#overlay.abierto {
+    display: block;
+}
+
+.carrito {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 380px;
+    max-width: 100%;
+    background-color: var(--negro);
+    color: white;
+    padding: 25px 20px;
+    overflow-y: auto;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -2px 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.carrito.abierto {
+    transform: translateX(0);
+}
+
+.cerrar-carrito {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8em;
+    line-height: 1;
+    cursor: pointer;
+}
+
 .carrito-item {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .carrito-item img {
     max-width: 50px;
     max-height: 50px;
     object-fit: contain;
+    background-color: #ffffff;
+    border-radius: 4px;
 }
 
 .carrito-titulo {
@@ -276,6 +357,28 @@ footer {
     text-overflow: ellipsis;
 }
 
+button[data-accion="sumar"],
+button[data-accion="restar"] {
+    background-color: var(--azul);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 26px;
+    height: 26px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button[data-accion="eliminar"] {
+    background-color: var(--rojo);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
 .carrito .total {
     text-align: right;
     font-weight: bold;
@@ -283,7 +386,7 @@ footer {
 
 /* FORMULARIO: mensaje de error */
 .form-error {
-    color: #c0392b;
+    color: var(--rojo);
     font-size: 0.9rem;
     min-height: 1.2em;
 }
@@ -291,5 +394,9 @@ footer {
 @media (max-width: 768px) {
     .carrito-item {
         flex-wrap: wrap;
+    }
+
+    .carrito {
+        width: 100%;
     }
 }

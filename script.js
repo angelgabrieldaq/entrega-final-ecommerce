@@ -12,13 +12,24 @@ function actualizarContador() {
   document.getElementById("cart-count").textContent = total;
 }
 
-// ===== FETCH DE PRODUCTOS (FakeStore API) =====
+// ===== FETCH DE PRODUCTOS (FakeStore API: ropa de hombre + accesorios) =====
 async function cargarProductos() {
   const contenedor = document.getElementById("productos-container");
   try {
-    const respuesta = await fetch("https://fakestoreapi.com/products?limit=8");
-    if (!respuesta.ok) throw new Error("Error HTTP: " + respuesta.status);
-    productos = await respuesta.json();
+    const [respuestaRopa, respuestaJoyeria] = await Promise.all([
+      fetch("https://fakestoreapi.com/products/category/men's%20clothing"),
+      fetch("https://fakestoreapi.com/products/category/jewelery"),
+    ]);
+
+    if (!respuestaRopa.ok) throw new Error("Error HTTP (ropa): " + respuestaRopa.status);
+    if (!respuestaJoyeria.ok) throw new Error("Error HTTP (accesorios): " + respuestaJoyeria.status);
+
+    const [ropa, joyeria] = await Promise.all([
+      respuestaRopa.json(),
+      respuestaJoyeria.json(),
+    ]);
+
+    productos = [...ropa, ...joyeria];
     renderizarProductos();
   } catch (error) {
     contenedor.innerHTML = "<p>No se pudieron cargar los productos. Intentá más tarde.</p>";
@@ -43,7 +54,7 @@ function renderizarProductos() {
 }
 
 // ===== CARRITO =====
-function agregarAlCarrito(id) {
+function agregarAlCarrito(id, boton) {
   const existente = carrito.find((item) => item.id === id);
   if (existente) {
     existente.qty++;
@@ -60,6 +71,12 @@ function agregarAlCarrito(id) {
   guardarCarrito();
   actualizarContador();
   renderizarCarrito();
+  abrirCarrito();
+
+  if (boton) {
+    boton.classList.add("agregado");
+    setTimeout(() => boton.classList.remove("agregado"), 800);
+  }
 }
 
 function cambiarCantidad(id, delta) {
@@ -111,10 +128,38 @@ function renderizarCarrito() {
   totalSpan.textContent = total.toFixed(2);
 }
 
+// ===== DRAWER DEL CARRITO =====
+const carritoAside = document.getElementById("carrito");
+const overlay = document.getElementById("overlay");
+
+function abrirCarrito() {
+  carritoAside.classList.add("abierto");
+  overlay.classList.add("abierto");
+  carritoAside.setAttribute("aria-hidden", "false");
+}
+
+function cerrarCarrito() {
+  carritoAside.classList.remove("abierto");
+  overlay.classList.remove("abierto");
+  carritoAside.setAttribute("aria-hidden", "true");
+}
+
+document.getElementById("btn-carrito").addEventListener("click", (e) => {
+  e.preventDefault();
+  abrirCarrito();
+});
+
+document.getElementById("cerrar-carrito").addEventListener("click", cerrarCarrito);
+overlay.addEventListener("click", cerrarCarrito);
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") cerrarCarrito();
+});
+
 // ===== EVENTOS (delegación) =====
 document.getElementById("productos-container").addEventListener("click", (e) => {
   if (e.target.tagName === "BUTTON") {
-    agregarAlCarrito(Number(e.target.dataset.id));
+    agregarAlCarrito(Number(e.target.dataset.id), e.target);
   }
 });
 

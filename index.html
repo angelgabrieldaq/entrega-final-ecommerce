@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mi Tienda: e-commerce de productos de calidad al mejor precio. Catálogo online con carrito de compras.">
+    <meta name="description" content="MAN TO MEN: ropa de hombre y accesorios de calidad al mejor precio. Catálogo online con carrito de compras.">
     <meta name="author" content="Ángel">
-    <title>Mi E-commerce | Mi Tienda</title>
+    <title>MAN TO MEN | Ropa de Hombre y Accesorios</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Mi Tienda</h1>
-        <p>Productos de calidad</p>
+        <h1>MAN TO MEN</h1>
+        <p>Ropa de hombre y accesorios</p>
         <nav>
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
@@ -27,7 +27,7 @@
     <main>
         <section id="inicio" class="inicio">
             <h2>Bienvenido</h2>
-            <p>Aquí encontrarás los mejores productos al mejor precio.</p>
+            <p>Encontrá la mejor ropa de hombre y accesorios al mejor precio.</p>
         </section>
 
         <section id="productos" class="productos">
@@ -37,13 +37,15 @@
             </div>
         </section>
 
-        <section id="carrito" class="carrito">
+        <div id="overlay"></div>
+        <aside id="carrito" class="carrito" aria-hidden="true">
+            <button id="cerrar-carrito" class="cerrar-carrito" aria-label="Cerrar carrito">&times;</button>
             <h2>Tu Carrito</h2>
             <div id="carrito-container">
                 <p>El carrito está vacío.</p>
             </div>
             <p class="total">Total: $<span id="carrito-total">0.00</span></p>
-        </section>
+        </aside>
 
         <section id="resenas" class="resenas">
             <h2>Reseñas</h2>
@@ -85,7 +87,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Mi Tienda. Todos los derechos reservados.</p>
+        <p>&copy; 2026 MAN TO MEN. Todos los derechos reservados.</p>
     </footer>
 
     <script src="script.js"></script>
