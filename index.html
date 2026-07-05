@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mi Tienda: e-commerce de productos de calidad al mejor precio. Catálogo online con carrito de compras.">
+    <meta name="author" content="Ángel">
+    <title>Mi E-commerce | Mi Tienda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Mi Tienda</h1>
+        <p>Productos de calidad</p>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#resenas">Reseñas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#carrito" id="btn-carrito">🛒 Carrito (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="inicio">
+            <h2>Bienvenido</h2>
+            <p>Aquí encontrarás los mejores productos al mejor precio.</p>
+        </section>
+
+        <section id="productos" class="productos">
+            <h2>Productos</h2>
+            <div class="grid-productos" id="productos-container">
+                <p id="productos-loading">Cargando productos...</p>
+            </div>
+        </section>
+
+        <section id="carrito" class="carrito">
+            <h2>Tu Carrito</h2>
+            <div id="carrito-container">
+                <p>El carrito está vacío.</p>
+            </div>
+            <p class="total">Total: $<span id="carrito-total">0.00</span></p>
+        </section>
+
+        <section id="resenas" class="resenas">
+            <h2>Reseñas</h2>
+            <div class="grid-resenas">
+                <div class="card-resena">
+                    <p>"Muy bueno, recomiendo"</p>
+                    <p class="autor">- Juan</p>
+                </div>
+                <div class="card-resena">
+                    <p>"Excelente servicio"</p>
+                    <p class="autor">- María</p>
+                </div>
+                <div class="card-resena">
+                    <p>"Volvería a comprar"</p>
+                    <p class="autor">- Carlos</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="video">
+            <h2>Video sobre nuestros productos</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Video de productos" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </section>
+
+        <section id="contacto" class="contacto">
+            <h2>Contacto</h2>
+            <form id="form-contacto" action="https://formspree.io/f/xeenzpya" method="POST">
+                <input type="text" name="nombre" id="input-nombre" placeholder="Tu nombre" required>
+                <input type="email" name="email" id="input-email" placeholder="Tu email" required>
+                <textarea name="mensaje" id="input-mensaje" placeholder="Tu mensaje" rows="5" required></textarea>
+                <p id="form-error" class="form-error" role="alert"></p>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mi Tienda. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
