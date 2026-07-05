@@ -61,7 +61,7 @@ preentrega-final-ecommerce-main/
 Los mensajes se envían a través de Formspree. Cada envío genera un email de confirmación.
 
 ## Deploy
-URL del deploy: [pendiente]
+URL del deploy: https://angelgabrieldaq.github.io/entrega-final-ecommerce/
 
 ## Autor
 Angel Acuña
